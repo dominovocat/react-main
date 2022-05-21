@@ -11,6 +11,7 @@ import ProfilePage from './pages/Profile';
 import DocsPage from './pages/DocsPage';
 import UserLoader from './pages/UserLoader';
 import HooksPage from './pages/Hooks';
+import TodoList from './pages/TodoList'
 import { themeEnum } from './enums';
 import { useDispatch, useSelector } from './app/store';
 const LoginPage = lazy(() => import('./pages/Login'));
@@ -86,11 +87,14 @@ function App () {
             <li>
               <Link to='/counter'>Counter</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to='/hooks'>Hooks</Link>
-            </li>
+            </li> */}
             <li>
               <Link to='/users'>Users</Link>
+            </li>
+            <li>
+              <Link to='/TodoList'>TodoList</Link>
             </li>
           </ul>
         </nav>
@@ -111,9 +115,9 @@ function App () {
               <Counter />
             </Route>
 
-            <Route exact path='/hooks'>
+            {/* <Route exact path='/hooks'>
               <HooksPage />
-            </Route>
+            </Route> */}
 
             <Route exact path='/calc'>
               <Calculator scale='km' />
@@ -129,6 +133,9 @@ function App () {
 
             <Route exact path='/users'>
               <UserLoader />
+            </Route>
+            <Route exact path='/TodoList'>
+              <TodoList />
             </Route>
 
             <PrivateRoute
