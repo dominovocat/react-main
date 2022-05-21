@@ -1,0 +1,22 @@
+.inerText{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px auto;
+  color: rgb(245, 238, 238);
+  background-color: rgb(93, 3, 116);
+  padding: 5px;
+  border-radius: 5px;
+  width: 79%;
+}
+.text{
+  margin: 25px;
+}
+.deleteIcon{
+  margin: 17px;
+  border: 1px solid rgb(224, 172, 235);
+}
+.icon {
+  font-size: 24px;
+  cursor: pointer;
+}

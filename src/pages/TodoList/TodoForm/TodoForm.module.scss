@@ -1,0 +1,28 @@
+*{
+box-sizing: border-box;
+}
+
+.todoInput {
+  padding: 14px 32px 14px 16px;
+  border-radius: 4px 0 0 4px;
+  border: 2px solid #ff0c0c;
+  outline: none;
+  width: 320px;
+  background: transparent;
+  color: #fff;
+}
+
+.todoInput::placeholder {
+  color: #e2e2e2;
+}
+
+.todoButton {
+  padding: 16px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  outline: none;
+  background-color: blueviolet;
+  color: #fff;
+  text-transform: capitalize;
+}
