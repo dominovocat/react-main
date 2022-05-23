@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './RegisterForm.css';
@@ -6,18 +6,18 @@ import { register } from '../../api/users';
 
 const regiterSchema = yup.object().shape({
   name: yup.string().required('Required field'),
-  email: yup
+  email: yup.string().email().required('Required field'),
+  password: yup
     .string()
-    .email()
-    .required('Required field'),
-  password: yup.string().required('Required field').matches(/^[\w]*$/),
+    .required('Required field')
+    .matches(/^[\w]*$/),
   confPassword: yup
     .string()
     .required('Required field')
     .oneOf([yup.ref('password')]),
 });
 
-function RegisterForm () {
+function RegisterForm() {
   const initialValues = {
     name: '',
     email: '',
@@ -35,6 +35,8 @@ function RegisterForm () {
     register(data);
   };
 
+  const value = useContext(Context);
+
   return (
     <Formik
       initialValues={initialValues}
@@ -42,66 +44,66 @@ function RegisterForm () {
       // validate={function() { return errorObj; }}
       validationSchema={regiterSchema}
     >
-      {settings => {
+      {(settings) => {
         const { errors } = settings;
 
         return (
           <Form>
-            <label className='inputWrapper'>
+            <label className="inputWrapper">
               <Field
                 className={errors.name ? 'error' : ''}
-                name='name'
-                placeholder='Name'
+                name="name"
+                placeholder="Name"
               />
               <ErrorMessage
-                className='errorLabel'
-                name='name'
-                component='div'
+                className="errorLabel"
+                name="name"
+                component="div"
               />
             </label>
 
-            <label className='inputWrapper'>
+            <label className="inputWrapper">
               <Field
                 className={errors.email ? 'error' : ''}
-                name='email'
-                placeholder='Email'
+                name="email"
+                placeholder="Email"
               />
               <ErrorMessage
-                className='errorLabel'
-                name='email'
-                component='div'
+                className="errorLabel"
+                name="email"
+                component="div"
               />
             </label>
 
-            <label className='inputWrapper'>
+            <label className="inputWrapper">
               <Field
                 className={errors.email ? 'error' : ''}
-                type='password'
-                name='password'
-                placeholder='Password'
+                type="password"
+                name="password"
+                placeholder="Password"
               />
               <ErrorMessage
-                className='errorLabel'
-                name='password'
-                component='div'
+                className="errorLabel"
+                name="password"
+                component="div"
               />
             </label>
 
-            <label className='inputWrapper'>
+            <label className="inputWrapper">
               <Field
                 className={errors.email ? 'error' : ''}
-                type='password'
-                name='confPassword'
-                placeholder='Confirm password'
+                type="password"
+                name="confPassword"
+                placeholder="Confirm password"
               />
               <ErrorMessage
-                className='errorLabel'
-                name='confPassword'
-                component='div'
+                className="errorLabel"
+                name="confPassword"
+                component="div"
               />
             </label>
 
-            <button type='submit'>Send</button>
+            <button type="submit">Send</button>
           </Form>
         );
       }}

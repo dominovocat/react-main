@@ -1,12 +1,24 @@
-import React from 'react'
+import React, { createContext, useReducer } from 'react';
 import RegisterForm from '../../component/RegisterForm';
 
+const initialState = { user: null };
+function reducer(state, action) {
+  if ((action, type === 'setUser')) {
+    return { ...state, user: action.payload };
+  }
+  return state;
+}
+
+export const Context = createContext;
+
 function RegisterPage() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
-    <div>
+    <Context.Provider value={state}>
       <h2>Register your new account</h2>
       <RegisterForm />
-    </div>
+    </Context.Provider>
   );
 }
 
